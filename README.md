@@ -1,4 +1,4 @@
-# 🎂 Happy Birthday Abhilasha!
+# 🎂 Birthday Celebration Website
 
 A personal, production-ready birthday celebration website built with pure HTML, CSS, and vanilla JavaScript — no frameworks, no build tools. Deploys instantly on GitHub Pages.
 
@@ -12,7 +12,7 @@ A personal, production-ready birthday celebration website built with pure HTML, 
 |---|---|
 | 🎈 Hero Section | Full-screen animated entrance with floating balloons & confetti |
 | 💌 Heartfelt Message | Personal letter in an elegant card with flickering candle glow |
-| 📸 Photo Gallery | 5-photo responsive grid with hover zoom & overlay effects |
+| 📸 Photo Gallery | Responsive grid with hover zoom & overlay effects |
 | 💛 Wishes Section | 5 elegantly styled birthday wish cards in colour variants |
 | 🎂 Cake Cutting | Cinematic interactive experience — candles blow, cake cuts, hearts float |
 | 🎊 Confetti Engine | Custom canvas-based confetti (no CDN needed) |
@@ -31,7 +31,7 @@ A personal, production-ready birthday celebration website built with pure HTML, 
 5. Knife swings in and cake shakes 🔪
 6. Cake splits apart with shine effect
 7. Hearts burst across the screen ❤️💕💖
-8. **"Happy Birthday, Abhilasha!"** reveal with confetti blast 🎉
+8. Birthday reveal with confetti blast 🎉
 
 ---
 
@@ -45,13 +45,13 @@ Birthday-special-/
 ├── README.md            ← This file
 └── assets/
     ├── images/
-    │   ├── photo1.png   ← Car selfie, pink top
-    │   ├── photo2.png   ← Purple outfit mirror selfie
-    │   ├── photo3.png   ← Red saree, brick wall
-    │   ├── photo4.png   ← Orange background selfie
-    │   └── photo5.png   ← Café mirror selfie
+    │   ├── photo1.png
+    │   ├── photo2.png
+    │   ├── photo3.png
+    │   ├── photo4.png
+    │   └── photo5.png
     └── audio/
-        └── bday-music.mp3  ← Background celebration music
+        └── bday-music.mp3
 ```
 
 ---
@@ -60,12 +60,12 @@ Birthday-special-/
 
 | What to change | Where |
 |---|---|
-| Birthday person's name | Search `Abhilasha` in `index.html` |
+| Name | Search the name in `index.html` |
 | Birthday date (for countdown/banner) | Line 1 of `script.js` → `BIRTHDAY_DATE` |
 | Heartfelt message | `#message` section in `index.html` |
 | Photos | Replace files in `assets/images/` |
 | Music | Replace `assets/audio/bday-music.mp3` |
-| Footer credit name | Search `Maniraj` in `index.html` |
+| Footer credit | Search `Maniraj` in `index.html` |
 
 ---
 
@@ -87,4 +87,4 @@ Birthday-special-/
 
 ---
 
-Made with ❤️ by **Maniraj** for Abhilasha's 22nd Birthday — August 10, 2026
+Made with ❤️ by **Maniraj**
