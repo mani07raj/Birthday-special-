@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday Abhilasha! 🎂</title>
+
+  <!-- Google Fonts: Playfair Display + Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Poppins:wght@300;400;500;600&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- =====================================================
+       CANVAS — confetti will be drawn here by script.js
+       ===================================================== -->
+  <canvas id="confetti-canvas"></canvas>
+
+  <!-- =====================================================
+       FLOATING MUSIC BUTTON (fixed, always visible)
+       To replace the audio: swap "assets/audio/bday-music.mp3"
+       ===================================================== -->
+  <div class="music-btn-wrapper" title="Toggle background music">
+    <button id="music-toggle" aria-label="Play / pause background music">
+      <span class="music-icon">♪</span>
+    </button>
+    <!-- ↓ Replace src with your actual audio file path -->
+    <audio id="bg-music" loop>
+      <source src="assets/audio/bday-music.mp3" type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio>
+  </div>
+
+  <!-- =====================================================
+       SECTION 1 · HERO
+       ===================================================== -->
+  <section id="hero" class="section hero-section">
+    <!-- Floating balloon elements (CSS animated) -->
+    <div class="balloons" aria-hidden="true">
+      <div class="balloon balloon-1">🎈</div>
+      <div class="balloon balloon-2">🎈</div>
+      <div class="balloon balloon-3">🎈</div>
+      <div class="balloon balloon-4">🎈</div>
+      <div class="balloon balloon-5">🎈</div>
+    </div>
+
+    <div class="hero-content">
+      <!-- ↓ Name: Abhilasha -->
+      <p class="hero-eyebrow animate-fade-up">Today is all about you ✨</p>
+      <h1 class="hero-heading animate-fade-up delay-1">
+        Happy Birthday,<br /><span class="hero-name">Abhilasha</span>
+      </h1>
+      <p class="hero-subtitle animate-fade-up delay-2">
+        Here's to the person who makes every room a little brighter,<br />
+        every day a little warmer, and every moment worth remembering.
+      </p>
+
+      <!-- Celebrate button — triggers confetti burst -->
+      <button class="celebrate-btn animate-fade-up delay-3" id="celebrate-btn" aria-label="Celebrate with confetti">
+        Celebrate 🎉
+      </button>
+    </div>
+
+    <!-- Scroll down indicator -->
+    <a href="#message" class="scroll-down" aria-label="Scroll down">
+      <span class="scroll-down-text">Scroll down</span>
+      <span class="scroll-down-arrow">↓</span>
+    </a>
+  </section>
+
+  <!-- =====================================================
+       SECTION 2 · HEARTFELT MESSAGE
+       ===================================================== -->
+  <section id="message" class="section message-section">
+    <div class="container">
+      <div class="section-label animate-on-scroll">A note from the heart</div>
+      <h2 class="section-heading animate-on-scroll">To Someone Truly Special</h2>
+
+      <div class="letter-card animate-on-scroll">
+        <!-- Candle / cake glow accent -->
+        <div class="candle-accent" aria-hidden="true">
+          <span class="candle-emoji">🕯️</span>
+          <span class="candle-glow"></span>
+        </div>
+
+        <p>
+          There are people who walk into your life and, without even trying, make it feel a little more
+          colourful just by being there. You are exactly that person, Abhilasha. What started as the kind of
+          connection that grows quietly in the background turned into one of the most genuine friendships I
+          know — the kind built on real conversations, real laughter, and the kind of comfort where
+          you never have to pretend to be anything other than yourself.
+        </p>
+        <p>
+          You carry something rare — a warmth that doesn't switch off, an energy that lifts the room without
+          demanding attention, and a heart that gives generously even when no one's counting. The way you
+          show up, the way you care, the way you light up when you talk about something you love — it's the
+          kind of thing that leaves a mark on people. It has certainly left one on me.
+        </p>
+        <p>
+          Today you turn 22, and I hope this year is as bright and full of life as you are. I hope it brings
+          you everything you've been quietly wishing for — the adventures, the joy, the peace, and all the
+          little moments that make a year feel well-lived. You deserve every single bit of it, Abhilasha,
+          and more.
+        </p>
+        <p class="letter-closing">
+          Here's to you — to your smile, your spark, and the beautiful chapters still unwritten.
+          May this birthday be just the beginning of your most wonderful year yet.
+          Happy birthday, from someone who is genuinely lucky to know you. 🥂
+        </p>
+
+        <p class="letter-signature">With love &amp; admiration ❤️</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================
+       SECTION 3 · PHOTO GALLERY
+       Photos of Abhilasha — photo1.jpg … photo5.jpg
+       located in assets/images/
+       ===================================================== -->
+  <section id="gallery" class="section gallery-section">
+    <div class="container">
+      <div class="section-label animate-on-scroll">Memories</div>
+      <h2 class="section-heading animate-on-scroll">Moments Worth Keeping</h2>
+      <p class="section-subheading animate-on-scroll">
+        A few snapshots of the moments that remind us why life is so good with great people in it.
+      </p>
+
+      <div class="gallery-grid">
+        <!-- Photo 1 — car selfie, pink top -->
+        <div class="gallery-item animate-on-scroll" style="--delay: 0.0s">
+          <div class="gallery-img-wrap">
+            <img src="assets/images/photo1.jpg" alt="Abhilasha — radiant selfie" loading="lazy" />
+            <div class="gallery-overlay">
+              <span class="gallery-icon">✨</span>
+            </div>
+          </div>
+        </div>
+        <!-- Photo 2 — purple outfit, mirror selfie -->
+        <div class="gallery-item animate-on-scroll" style="--delay: 0.1s">
+          <div class="gallery-img-wrap">
+            <img src="assets/images/photo2.jpg" alt="Abhilasha — mirror selfie in purple" loading="lazy" />
+            <div class="gallery-overlay">
+              <span class="gallery-icon">💜</span>
+            </div>
+          </div>
+        </div>
+        <!-- Photo 3 — red saree, large featured slot -->
+        <div class="gallery-item gallery-item--large animate-on-scroll" style="--delay: 0.15s">
+          <div class="gallery-img-wrap">
+            <img src="assets/images/photo3.jpg" alt="Abhilasha — stunning in red saree" loading="lazy" />
+            <div class="gallery-overlay">
+              <span class="gallery-icon">🌹</span>
+            </div>
+          </div>
+        </div>
+        <!-- Photo 4 — orange background selfie -->
+        <div class="gallery-item animate-on-scroll" style="--delay: 0.2s">
+          <div class="gallery-img-wrap">
+            <img src="assets/images/photo4.jpg" alt="Abhilasha — effortless and glowing" loading="lazy" />
+            <div class="gallery-overlay">
+              <span class="gallery-icon">🌟</span>
+            </div>
+          </div>
+        </div>
+        <!-- Photo 5 — café mirror selfie, large featured slot -->
+        <div class="gallery-item gallery-item--large animate-on-scroll" style="--delay: 0.25s">
+          <div class="gallery-img-wrap">
+            <img src="assets/images/photo5.jpg" alt="Abhilasha — café vibes mirror selfie" loading="lazy" />
+            <div class="gallery-overlay">
+              <span class="gallery-icon">🥂</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================
+       SECTION 4 · WISHES & QUOTES
+       ===================================================== -->
+  <section id="wishes" class="section wishes-section">
+    <div class="container">
+      <div class="section-label animate-on-scroll">Wishes for You</div>
+      <h2 class="section-heading animate-on-scroll">From the Heart</h2>
+
+      <div class="wishes-grid">
+
+        <div class="wish-card wish-card--rose animate-on-scroll" style="--delay: 0.0s">
+          <div class="wish-icon" aria-hidden="true">🌹</div>
+          <p class="wish-text">
+            "May this year bring you every dream you've been quietly nurturing — the ones you've almost
+            let yourself believe in. You deserve to see them bloom."
+          </p>
+        </div>
+
+        <div class="wish-card wish-card--gold animate-on-scroll" style="--delay: 0.1s">
+          <div class="wish-icon" aria-hidden="true">✨</div>
+          <p class="wish-text">
+            "May you be surrounded by people who see your worth without you having to prove it,
+            and who celebrate you as loudly as you've always celebrated others."
+          </p>
+        </div>
+
+        <div class="wish-card wish-card--blush animate-on-scroll" style="--delay: 0.2s">
+          <div class="wish-icon" aria-hidden="true">🕊️</div>
+          <p class="wish-text">
+            "May this birthday mark the beginning of your most peaceful, most joyful chapter yet —
+            one where you choose yourself first, unapologetically and wholeheartedly."
+          </p>
+        </div>
+
+        <div class="wish-card wish-card--sage animate-on-scroll" style="--delay: 0.3s">
+          <div class="wish-icon" aria-hidden="true">🌿</div>
+          <p class="wish-text">
+            "May every door you knock on open wide for you this year, and may every risk you take
+            lead somewhere more beautiful than you imagined."
+          </p>
+        </div>
+
+        <div class="wish-card wish-card--deep animate-on-scroll" style="--delay: 0.4s">
+          <div class="wish-icon" aria-hidden="true">🎂</div>
+          <p class="wish-text">
+            "Happy birthday to someone who makes the world feel a little more human, a little
+            more kind, and a whole lot more wonderful just by being in it."
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================
+       SECTION 5 · BIRTHDAY BANNER / COUNTDOWN
+       ↓ Set BIRTHDAY_DATE in script.js to control this section
+       ===================================================== -->
+  <section id="banner" class="section banner-section">
+    <div class="container">
+
+      <!-- Shown when today IS the birthday -->
+      <div id="banner-today" class="banner-today" style="display:none;">
+        <div class="banner-cake" aria-hidden="true">🎂</div>
+        <h2 class="banner-heading animate-on-scroll">It's Your Day!</h2>
+        <p class="banner-subtext animate-on-scroll">
+          Today the universe pauses just for you. Soak in every second of it.
+        </p>
+        <div class="banner-confetti-row" aria-hidden="true">
+          🎉 🎊 🎈 🌟 💛 🎈 🎊 🎉
+        </div>
+      </div>
+
+      <!-- Shown when birthday is still upcoming -->
+      <div id="banner-countdown" class="banner-countdown" style="display:none;">
+        <div class="section-label animate-on-scroll">Counting down to the big day</div>
+        <h2 class="section-heading animate-on-scroll">The Celebration Is Coming</h2>
+        <div class="countdown-timer animate-on-scroll">
+          <div class="countdown-unit">
+            <span class="countdown-value" id="cd-days">00</span>
+            <span class="countdown-label">Days</span>
+          </div>
+          <div class="countdown-sep">:</div>
+          <div class="countdown-unit">
+            <span class="countdown-value" id="cd-hours">00</span>
+            <span class="countdown-label">Hours</span>
+          </div>
+          <div class="countdown-sep">:</div>
+          <div class="countdown-unit">
+            <span class="countdown-value" id="cd-mins">00</span>
+            <span class="countdown-label">Minutes</span>
+          </div>
+          <div class="countdown-sep">:</div>
+          <div class="countdown-unit">
+            <span class="countdown-value" id="cd-secs">00</span>
+            <span class="countdown-label">Seconds</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Shown when birthday has already passed this year -->
+      <div id="banner-past" class="banner-today" style="display:none;">
+        <div class="banner-cake" aria-hidden="true">🌸</div>
+        <h2 class="banner-heading animate-on-scroll">Happy (Belated) Birthday!</h2>
+        <p class="banner-subtext animate-on-scroll">
+          The day may have passed, but the celebration is still very much alive. 🥂
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =====================================================
+       SECTION 6 · FOOTER
+       ↓ Replace "Your Name" below
+       ===================================================== -->
+  <footer id="footer" class="footer-section">
+    <div class="container">
+      <p class="footer-closing">
+        "The best gift you can give someone is the certainty of being loved,<br />
+        not just on their birthday, but every single day."
+      </p>
+      <div class="footer-divider" aria-hidden="true">✦ ✦ ✦</div>
+      <!-- ↓ Replace "Your Name" -->
+      <p class="footer-credit">Made with ❤️ by <strong>Your Name</strong></p>
+      <p class="footer-date" id="footer-date"></p>
+    </div>
+  </footer>
+
+  <script>
+    // Hide broken images gracefully — the parent .gallery-img-wrap
+    // already has a gradient background that shows through.
+    document.querySelectorAll('.gallery-img-wrap img').forEach(img => {
+      img.addEventListener('error', () => {
+        img.style.opacity = '0';
+        img.style.pointerEvents = 'none';
+      });
+    });
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>
