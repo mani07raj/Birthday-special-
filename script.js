@@ -330,58 +330,139 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 
 /* =====================================================
-   9. CAKE CUTTING INTERACTION
+   9. CAKE CUTTING — Cinematic Sequence
+   Step 1: Cake + balloons appear (CSS entrance)
+   Step 2: User clicks "Cut the Cake"
+   Step 3: Candles blow out one by one
+   Step 4: Knife swings in, cake splits
+   Step 5: Hearts burst out + Happy Birthday reveal
    ===================================================== */
 (function initCakeCut() {
-  const cutBtn     = document.getElementById('cut-btn');
-  const cakeUncut  = document.getElementById('cake-uncut');
-  const cakeCut    = document.getElementById('cake-cut');
-  const knife      = document.getElementById('cake-knife');
-  const flames     = document.querySelectorAll('.flame');
-  const againBtn   = document.getElementById('cake-confetti-btn');
+  const ckCutBtn   = document.getElementById('ck-cut-btn');
+  const ckCakeWrap = document.getElementById('ck-cake-wrap');
+  const ckBtnArea  = document.getElementById('ck-btn-area');
+  const ckAfter    = document.getElementById('ck-after');
+  const ckKnife    = document.getElementById('ck-knife');
+  const ckAgainBtn = document.getElementById('ck-again-btn');
+  const ckInstruct = document.getElementById('ck-instruction');
+  const ckHearts   = document.getElementById('ck-hearts');
+  const ckFlames   = document.querySelectorAll('.ck-flame');
 
-  if (!cutBtn) return;
+  if (!ckCutBtn) return;
 
-  cutBtn.addEventListener('click', () => {
-    // Disable button immediately
-    cutBtn.disabled = true;
-    cutBtn.style.opacity = '0.6';
+  // Change instruction text after 2s to invite the click
+  setTimeout(() => {
+    if (ckInstruct) {
+      ckInstruct.textContent = '🎂 Now cut the cake!';
+      ckInstruct.style.color = 'var(--color-rose)';
+      ckInstruct.style.fontStyle = 'normal';
+      ckInstruct.style.fontWeight = '600';
+    }
+  }, 2200);
 
-    // Step 1: Show knife swinging in
-    knife.classList.add('active');
+  ckCutBtn.addEventListener('click', () => {
+    ckCutBtn.disabled = true;
 
-    // Step 2: Blow out candles one by one
-    flames.forEach((flame, i) => {
-      setTimeout(() => {
-        flame.classList.add('blown-out');
-      }, i * 120);
+    // STEP 1: Blow candles out one by one
+    ckFlames.forEach((flame, i) => {
+      setTimeout(() => flame.classList.add('ck-blown'), i * 180);
     });
 
-    // Step 3: After knife animation — flip to cut state + confetti
+    // STEP 2: Knife swings in
     setTimeout(() => {
-      cakeUncut.style.transition = 'opacity 0.4s ease';
-      cakeUncut.style.opacity = '0';
+      ckKnife.classList.add('ck-knife--in');
+    }, 300);
 
-      setTimeout(() => {
-        cakeUncut.style.display = 'none';
-        cakeCut.style.display   = 'block';
-
-        // Big confetti burst!
-        Confetti.burst(window.innerWidth / 2, window.innerHeight / 2, 220);
-
-        // Second burst for extra drama
-        setTimeout(() => {
-          Confetti.burst(window.innerWidth * 0.25, window.innerHeight * 0.4, 100);
-          Confetti.burst(window.innerWidth * 0.75, window.innerHeight * 0.4, 100);
-        }, 400);
-
-      }, 400);
+    // STEP 3: Cake shakes
+    setTimeout(() => {
+      ckCakeWrap.style.animation = 'ckShake 0.4s ease';
     }, 900);
+
+    // STEP 4: Flip to after-cut state
+    setTimeout(() => {
+      ckCakeWrap.style.transition = 'opacity 0.35s ease, transform 0.35s ease';
+      ckCakeWrap.style.opacity = '0';
+      ckCakeWrap.style.transform = 'scale(0.85)';
+      ckBtnArea.style.transition = 'opacity 0.3s ease';
+      ckBtnArea.style.opacity = '0';
+    }, 1250);
+
+    setTimeout(() => {
+      ckCakeWrap.style.display = 'none';
+      ckBtnArea.style.display  = 'none';
+      ckAfter.style.display    = 'flex';
+
+      // Spawn heart particles
+      spawnHearts();
+
+      // Big confetti
+      Confetti.burst(window.innerWidth / 2, window.innerHeight / 2, 200);
+      setTimeout(() => {
+        Confetti.burst(window.innerWidth * 0.2, window.innerHeight * 0.5, 100);
+        Confetti.burst(window.innerWidth * 0.8, window.innerHeight * 0.5, 100);
+      }, 500);
+    }, 1600);
   });
 
-  // "Celebrate Again" button on the cut state
-  if (againBtn) {
-    againBtn.addEventListener('click', () => {
+  // Spawn floating hearts
+  function spawnHearts() {
+    if (!ckHearts) return;
+    const heartEmojis = ['❤️','💕','💖','💗','💓','💝','🩷','💞'];
+    const count = 22;
+    for (let i = 0; i < count; i++) {
+      setTimeout(() => {
+        const h = document.createElement('span');
+        h.className = 'ck-heart-particle';
+        h.textContent = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+        const leftPct = 5 + Math.random() * 90;
+        const dur = 2.2 + Math.random() * 1.8;
+        const rot = -30 + Math.random() * 60;
+        h.style.left = leftPct + '%';
+        h.style.setProperty('--rot', rot + 'deg');
+        h.style.animationDuration = dur + 's';
+        h.style.fontSize = (1.2 + Math.random() * 1.4) + 'rem';
+        ckHearts.appendChild(h);
+        setTimeout(() => h.remove(), dur * 1000 + 200);
+      }, i * 90);
+    }
+    // Keep spawning hearts for 4s
+    let waves = 0;
+    const heartInterval = setInterval(() => {
+      waves++;
+      if (waves > 3) { clearInterval(heartInterval); return; }
+      for (let i = 0; i < 8; i++) {
+        setTimeout(() => {
+          const h = document.createElement('span');
+          h.className = 'ck-heart-particle';
+          h.textContent = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+          h.style.left = (5 + Math.random() * 90) + '%';
+          const dur = 2 + Math.random() * 1.5;
+          const rot = -30 + Math.random() * 60;
+          h.style.setProperty('--rot', rot + 'deg');
+          h.style.animationDuration = dur + 's';
+          h.style.fontSize = (1 + Math.random() * 1.2) + 'rem';
+          ckHearts.appendChild(h);
+          setTimeout(() => h.remove(), dur * 1000 + 200);
+        }, i * 120);
+      }
+    }, 1200);
+  }
+
+  // Shake keyframe injected via JS (avoids extra CSS)
+  const shakeStyle = document.createElement('style');
+  shakeStyle.textContent = `@keyframes ckShake {
+    0%,100%{transform:translateX(0) rotate(0)}
+    20%{transform:translateX(-8px) rotate(-2deg)}
+    40%{transform:translateX(8px)  rotate(2deg)}
+    60%{transform:translateX(-5px) rotate(-1deg)}
+    80%{transform:translateX(5px)  rotate(1deg)}
+  }`;
+  document.head.appendChild(shakeStyle);
+
+  // "Celebrate Again" button
+  if (ckAgainBtn) {
+    ckAgainBtn.addEventListener('click', () => {
+      spawnHearts();
       Confetti.burst(window.innerWidth / 2, window.innerHeight / 2, 200);
     });
   }
