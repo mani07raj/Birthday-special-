@@ -841,3 +841,259 @@ body {
 
 /* When an image errors (missing file) show a centred icon */
 .gallery-img-wrap img.error-hide { display: none; }
+
+/* ─────────────────────────────────────────────────────
+   CAKE CUTTING SECTION
+   ───────────────────────────────────────────────────── */
+.cake-section {
+  background:
+    radial-gradient(ellipse at 30% 20%, rgba(242,196,206,0.25) 0%, transparent 55%),
+    radial-gradient(ellipse at 80% 80%, rgba(201,168,76,0.15) 0%, transparent 50%),
+    linear-gradient(160deg, #fff5f7 0%, var(--color-cream) 100%);
+  text-align: center;
+}
+
+.cake-section .section-heading,
+.cake-section .section-label { text-align: center; }
+
+.cake-wrapper {
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+/* ── Candles ───────────────────────────────────────── */
+.candles-row {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  margin-bottom: 0;
+  position: relative;
+  z-index: 3;
+}
+
+.candle-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.candle-body {
+  width: 10px;
+  height: 36px;
+  background: linear-gradient(180deg, #f9e4f0 0%, #e8788a 100%);
+  border-radius: 3px;
+  box-shadow: inset -2px 0 4px rgba(0,0,0,0.1);
+}
+
+.flame {
+  width: 14px;
+  height: 22px;
+  background: radial-gradient(ellipse at 50% 80%, #fff176 0%, #ffb300 50%, #ff6f00 100%);
+  border-radius: 50% 50% 30% 30% / 60% 60% 40% 40%;
+  animation: flameFlicker 0.7s ease-in-out infinite alternate;
+  filter: drop-shadow(0 0 6px rgba(255,180,0,0.8));
+  transform-origin: bottom center;
+}
+
+@keyframes flameFlicker {
+  0%   { transform: scaleX(1)   scaleY(1)   rotate(-2deg); opacity: 1; }
+  50%  { transform: scaleX(1.1) scaleY(0.9) rotate(2deg);  opacity: 0.9; }
+  100% { transform: scaleX(0.9) scaleY(1.1) rotate(-1deg); opacity: 1; }
+}
+
+.flame.blown-out {
+  animation: blowOut 0.4s ease forwards;
+}
+
+@keyframes blowOut {
+  0%   { transform: scaleY(1); opacity: 1; }
+  60%  { transform: scaleY(1.5) scaleX(0.3); opacity: 0.4; }
+  100% { transform: scaleY(0); opacity: 0; }
+}
+
+/* ── Cake Body ─────────────────────────────────────── */
+.cake-svg-wrap {
+  position: relative;
+  display: inline-block;
+}
+
+.cake-body {
+  position: relative;
+  width: 220px;
+  margin: 0 auto;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.cake-body:hover { transform: scale(1.03); }
+
+.cake-top-layer {
+  height: 55px;
+  background: linear-gradient(135deg, #fce4ea 0%, #f9b8c8 100%);
+  border-radius: 12px 12px 0 0;
+  position: relative;
+  overflow: hidden;
+  border: 2px solid rgba(232,120,138,0.3);
+}
+
+.cake-frosting-drip {
+  position: absolute;
+  bottom: -8px;
+  left: 0; right: 0;
+  height: 18px;
+  background: white;
+  border-radius: 0 0 50% 50% / 0 0 100% 100%;
+  /* Multiple drip bumps via box-shadow */
+  box-shadow:
+    -40px 4px 0 2px white,
+    40px 4px 0 2px white,
+    -80px 2px 0 1px white,
+    80px 2px 0 1px white;
+}
+
+.cake-decoration {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  font-size: 1.3rem;
+  padding-top: 10px;
+}
+
+.cake-middle-layer {
+  height: 50px;
+  background: linear-gradient(135deg, #f0d98a 0%, #c9a84c 100%);
+  border-left: 2px solid rgba(201,168,76,0.4);
+  border-right: 2px solid rgba(201,168,76,0.4);
+}
+
+.cake-bottom-layer {
+  height: 65px;
+  background: linear-gradient(135deg, #fce4ea 0%, #e8788a 100%);
+  border-radius: 0 0 8px 8px;
+  border: 2px solid rgba(232,120,138,0.3);
+  border-top: none;
+}
+
+.cake-plate {
+  height: 14px;
+  background: linear-gradient(180deg, #f0f0f0 0%, #d0d0d0 100%);
+  border-radius: 0 0 50% 50% / 0 0 100% 100%;
+  width: 250px;
+  margin: 0 auto;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* ── Knife animation ───────────────────────────────── */
+.knife {
+  position: absolute;
+  top: 30px;
+  right: -50px;
+  font-size: 2rem;
+  transform: rotate(45deg);
+  opacity: 0;
+  transition: all 0.5s ease;
+  pointer-events: none;
+}
+
+.knife.active {
+  opacity: 1;
+  right: 60px;
+  transform: rotate(45deg) translateY(20px);
+}
+
+/* ── Cut Button ────────────────────────────────────── */
+.cut-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 28px;
+  padding: 14px 40px;
+  background: linear-gradient(135deg, var(--color-rose) 0%, var(--color-maroon) 100%);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-family: var(--font-sans);
+  font-size: 1.05rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 6px 24px rgba(232,120,138,0.4);
+  transition: transform var(--transition), box-shadow var(--transition);
+  animation: pulseBtn 2s ease-in-out infinite;
+}
+
+@keyframes pulseBtn {
+  0%, 100% { box-shadow: 0 6px 24px rgba(232,120,138,0.4); }
+  50%       { box-shadow: 0 6px 36px rgba(232,120,138,0.7); }
+}
+
+.cut-btn:hover {
+  transform: translateY(-3px) scale(1.04);
+  animation: none;
+  box-shadow: 0 10px 32px rgba(232,120,138,0.55);
+}
+
+.cake-hint {
+  font-size: 0.82rem;
+  color: var(--color-text-light);
+  margin-top: 10px;
+  letter-spacing: 0.05em;
+}
+
+/* ── After-cut state ───────────────────────────────── */
+.cake-cut-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  font-size: clamp(3.5rem, 10vw, 6rem);
+  margin-bottom: 28px;
+  animation: cakeSplit 0.6s cubic-bezier(0.22,1,0.36,1) forwards;
+}
+
+@keyframes cakeSplit {
+  0%   { gap: 4px; }
+  100% { gap: 40px; }
+}
+
+.cake-slice-left  { animation: slideLeft  0.6s cubic-bezier(0.22,1,0.36,1) forwards; }
+.cake-slice-right { animation: slideRight 0.6s cubic-bezier(0.22,1,0.36,1) forwards; }
+
+@keyframes slideLeft  { from { transform: translateX(0); } to { transform: translateX(-18px) rotate(-8deg); } }
+@keyframes slideRight { from { transform: translateX(0); } to { transform: translateX(18px)  rotate(8deg);  } }
+
+.cut-sparkle {
+  font-size: 2rem;
+  animation: sparkSpin 1s ease infinite;
+}
+@keyframes sparkSpin {
+  0%,100% { transform: scale(1) rotate(0deg); }
+  50%      { transform: scale(1.4) rotate(180deg); }
+}
+
+/* ── Wish Reveal ───────────────────────────────────── */
+.wish-reveal {
+  animation: revealUp 0.7s cubic-bezier(0.22,1,0.36,1) forwards;
+  opacity: 0;
+  animation-delay: 0.4s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes revealUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.wish-reveal-emoji { font-size: 3.5rem; margin-bottom: 12px; }
+
+.wish-reveal-text {
+  font-family: var(--font-serif);
+  font-size: clamp(1.6rem, 5vw, 2.4rem);
+  color: var(--color-maroon);
+  margin-bottom: 12px;
+}
+
+.wish-reveal-sub {
+  font-size: 1rem;
+  color: var(--color-text-light);
+  line-height: 1.8;
+}

@@ -327,3 +327,62 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     target.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 });
+
+
+/* =====================================================
+   9. CAKE CUTTING INTERACTION
+   ===================================================== */
+(function initCakeCut() {
+  const cutBtn     = document.getElementById('cut-btn');
+  const cakeUncut  = document.getElementById('cake-uncut');
+  const cakeCut    = document.getElementById('cake-cut');
+  const knife      = document.getElementById('cake-knife');
+  const flames     = document.querySelectorAll('.flame');
+  const againBtn   = document.getElementById('cake-confetti-btn');
+
+  if (!cutBtn) return;
+
+  cutBtn.addEventListener('click', () => {
+    // Disable button immediately
+    cutBtn.disabled = true;
+    cutBtn.style.opacity = '0.6';
+
+    // Step 1: Show knife swinging in
+    knife.classList.add('active');
+
+    // Step 2: Blow out candles one by one
+    flames.forEach((flame, i) => {
+      setTimeout(() => {
+        flame.classList.add('blown-out');
+      }, i * 120);
+    });
+
+    // Step 3: After knife animation — flip to cut state + confetti
+    setTimeout(() => {
+      cakeUncut.style.transition = 'opacity 0.4s ease';
+      cakeUncut.style.opacity = '0';
+
+      setTimeout(() => {
+        cakeUncut.style.display = 'none';
+        cakeCut.style.display   = 'block';
+
+        // Big confetti burst!
+        Confetti.burst(window.innerWidth / 2, window.innerHeight / 2, 220);
+
+        // Second burst for extra drama
+        setTimeout(() => {
+          Confetti.burst(window.innerWidth * 0.25, window.innerHeight * 0.4, 100);
+          Confetti.burst(window.innerWidth * 0.75, window.innerHeight * 0.4, 100);
+        }, 400);
+
+      }, 400);
+    }, 900);
+  });
+
+  // "Celebrate Again" button on the cut state
+  if (againBtn) {
+    againBtn.addEventListener('click', () => {
+      Confetti.burst(window.innerWidth / 2, window.innerHeight / 2, 200);
+    });
+  }
+})();
